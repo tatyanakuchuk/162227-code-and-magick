@@ -6,17 +6,16 @@ var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var GAP = 10;
 var FONT_GAP = 17;
-var TEXT_WIDTH = 50;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
 var BAR_GAP = 50;
 var BEGIN_OF_GIST_X = 150;
-var BEGIN_OF_GIST_Y = CLOUD_HEIGHT - BAR_HEIGHT - GAP * 2 - FONT_GAP;
 var TEXT_POS = CLOUD_HEIGHT - GAP;
 
 
 var renderCloud = function(ctx, x, y, color) {
   ctx.fillStyle = color;
+
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
