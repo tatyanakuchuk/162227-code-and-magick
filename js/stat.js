@@ -56,7 +56,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   var colorYou = 'rgba(255, 0, 0, 1)';
   var colorPlayers = function (i) {
-    for (var i = 0; i < names.length; i++) {
+    for (i = 0; i < names.length; i++) {
       ctx.fillStyle = 'rgba(0, 0, 139, ' + Math.random() + ')';
     }
   };
