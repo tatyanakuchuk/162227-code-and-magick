@@ -45,31 +45,30 @@ window.renderStatistics = function (ctx, names, times) {
 
   var you = names.indexOf('Вы');
 
-  var doFillStyle = function (ctx, color) {
+  var doFillStyle = function (color) {
     ctx.fillStyle = color;
   };
 
-  var doFillRect = function(ctx, i, color) {
+  var doFillRect = function (i, color) {
     ctx.fillStyle = color;
     ctx.fillRect(BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - BAR_HEIGHT * times[i] / maxTime - GAP * 2 - FONT_GAP, BAR_WIDTH, BAR_HEIGHT * times[i] / maxTime);
-  }
+  };
 
   var colorYou = 'rgba(255, 0, 0, 1)';
-  var colorPlayers = function(i) {
+  var colorPlayers = function (i) {
     for (var i = 0; i < names.length; i++) {
       ctx.fillStyle = 'rgba(0, 0, 139, ' + Math.random() + ')';
     }
-  }
+  };
 
   for (var i = 0; i < names.length; i++) {
-    doFillStyle(ctx, '#000');
+    doFillStyle('#000');
     ctx.fillText(names[i], BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, TEXT_POS);
 
-    if(i === you) {
-      doFillRect(ctx, you, colorYou);
-    }
-    else {
-      doFillRect(ctx, i, colorPlayers(i));
+    if (i === you) {
+      doFillRect(you, colorYou);
+    } else {
+      doFillRect(i, colorPlayers(i));
     }
 
   }
