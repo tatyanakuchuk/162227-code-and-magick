@@ -47,14 +47,14 @@ window.renderStatistics = function (ctx, names, times) {
 
   var maxTime = getMaxElement(times);
 
-  var you = names.indexOf("Вы");
+  var you = names.indexOf('Вы');
 
   for (var i = 0; i < names.length; i++) {
-    doFillStyle (ctx, '#000');
+    doFillStyle(ctx, '#000');
     ctx.fillText(names[i], BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, TEXT_POS);
-    doFillStyle (ctx, 'rgba(0, 0, 139, ' + Math.random() + ')');
+    doFillStyle(ctx, 'rgba(0, 0, 139, ' + Math.random() + ')');
     ctx.fillRect (BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - BAR_HEIGHT * times[i] / maxTime - GAP * 2 - FONT_GAP, BAR_WIDTH, BAR_HEIGHT * times[i] / maxTime);
-    doFillStyle (ctx, 'rgba(255, 0, 0, 1)');
+    doFillStyle(ctx, 'rgba(255, 0, 0, 1)');
     ctx.fillRect(BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * you, CLOUD_HEIGHT - BAR_HEIGHT * times[you] / maxTime - GAP * 2 - FONT_GAP, BAR_WIDTH, BAR_HEIGHT * times[you] / maxTime);
   }
 };
