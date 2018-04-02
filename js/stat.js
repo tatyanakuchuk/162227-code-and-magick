@@ -31,10 +31,6 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var doFillStyle = function (ctx, color) {
-  ctx.fillStyle = color;
-};
-
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + 10, CLOUD_Y + 10, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -49,12 +45,32 @@ window.renderStatistics = function (ctx, names, times) {
 
   var you = names.indexOf('Вы');
 
+  var doFillStyle = function (ctx, color) {
+    ctx.fillStyle = color;
+  };
+
+  var doFillRect = function(ctx, i, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - BAR_HEIGHT * times[i] / maxTime - GAP * 2 - FONT_GAP, BAR_WIDTH, BAR_HEIGHT * times[i] / maxTime);
+  }
+
+  var colorYou = 'rgba(255, 0, 0, 1)';
+  var colorPlayers = function(i) {
+    for (var i = 0; i < names.length; i++) {
+      ctx.fillStyle = 'rgba(0, 0, 139, ' + Math.random() + ')';
+    }
+  }
+
   for (var i = 0; i < names.length; i++) {
     doFillStyle(ctx, '#000');
     ctx.fillText(names[i], BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, TEXT_POS);
-    doFillStyle(ctx, 'rgba(0, 0, 139, ' + Math.random() + ')');
-    ctx.fillRect(BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - BAR_HEIGHT * times[i] / maxTime - GAP * 2 - FONT_GAP, BAR_WIDTH, BAR_HEIGHT * times[i] / maxTime);
-    doFillStyle(ctx, 'rgba(255, 0, 0, 1)');
-    ctx.fillRect(BEGIN_OF_GIST_X + (BAR_WIDTH + BAR_GAP) * you, CLOUD_HEIGHT - BAR_HEIGHT * times[you] / maxTime - GAP * 2 - FONT_GAP, BAR_WIDTH, BAR_HEIGHT * times[you] / maxTime);
+
+    if(i === you) {
+      doFillRect(ctx, you, colorYou);
+    }
+    else {
+      doFillRect(ctx, i, colorPlayers(i));
+    }
+
   }
 };
