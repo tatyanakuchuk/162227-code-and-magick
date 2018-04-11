@@ -37,7 +37,7 @@ var obj = {
 var array = [];
 for (var i = 1; i <= 4; i++) {
   array.push(obj);
-};
+}
 
 // Шаблон
 var template = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
@@ -54,7 +54,7 @@ var getNewElem = function () {
   similarWizard.appendChild(fragment);
 };
 
-for (var i = 1; i < 4; i++) {
+for (i = 1; i < 4; i++) {
   getNewElem();
 }
 
