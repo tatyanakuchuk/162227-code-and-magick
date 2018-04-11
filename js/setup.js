@@ -41,19 +41,21 @@ for (var i = 1; i <= 4; i++) {
 
 // Шаблон
 var template = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-var newElem = template.cloneNode(true);
+var fragment = document.createDocumentFragment();
+var similarWizard = document.querySelector('.setup-similar-list');
+
 
 var getNewElem = function () {
-  var fragment = document.createDocumentFragment();
+  var newElem = template.cloneNode(true);
   newElem.querySelector('.setup-similar-label').textContent = obj.name();
   newElem.querySelector('.wizard-coat').style.fill = obj.coatColor();
   newElem.querySelector('.wizard-eyes').style.fill = obj.eyesColor();
   fragment.appendChild(newElem);
-  var similarWizard = document.querySelector('.setup-similar-list');
   similarWizard.appendChild(fragment);
 };
-getNewElem();
 
+for (var i = 1; i < 4; i++) {
+  getNewElem();
+}
 
-console.log(getNewElem());
 document.querySelector('.setup-similar').classList.remove('hidden');
