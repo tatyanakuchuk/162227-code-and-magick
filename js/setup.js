@@ -24,7 +24,7 @@ var similarWizard = document.querySelector('.setup-similar-list');
 
 var getNewElem = function () {
   var newElem = template.cloneNode(true);
-  newElem.querySelector('.setup-similar-label').textContent =  getRandomIndex(firstNames) + ' ' + getRandomIndex(secondNames);
+  newElem.querySelector('.setup-similar-label').textContent = getRandomIndex(firstNames) + ' ' + getRandomIndex(secondNames);
   newElem.querySelector('.wizard-coat').style.fill = getRandomIndex(coatColor);
   newElem.querySelector('.wizard-eyes').style.fill = getRandomIndex(eyesColor);
   fragment.appendChild(newElem);
