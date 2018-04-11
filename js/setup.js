@@ -54,7 +54,7 @@ var getNewElem = function () {
   similarWizard.appendChild(fragment);
 };
 
-for (i = 1; i < 4; i++) {
+for (i = 0; i < 4; i++) {
   getNewElem();
 }
 
