@@ -16,29 +16,6 @@ var getRandomIndex = function (arr) {
   return arr[randomIndex];
 };
 
-// Объект
-var obj = {
-  name: function () {
-    var name = getRandomIndex(firstNames);
-    var name2 = getRandomIndex(secondNames);
-    return name + ' ' + name2;
-  },
-  coatColor: function () {
-    var coat = getRandomIndex(coatColor);
-    return coat;
-  },
-  eyesColor: function () {
-    var eyes = getRandomIndex(eyesColor);
-    return eyes;
-  }
-};
-
-// Массив
-var array = [];
-for (var i = 1; i <= 4; i++) {
-  array.push(obj);
-}
-
 // Шаблон
 var template = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 var fragment = document.createDocumentFragment();
@@ -47,14 +24,14 @@ var similarWizard = document.querySelector('.setup-similar-list');
 
 var getNewElem = function () {
   var newElem = template.cloneNode(true);
-  newElem.querySelector('.setup-similar-label').textContent = obj.name();
-  newElem.querySelector('.wizard-coat').style.fill = obj.coatColor();
-  newElem.querySelector('.wizard-eyes').style.fill = obj.eyesColor();
+  newElem.querySelector('.setup-similar-label').textContent =  getRandomIndex(firstNames) + ' ' + getRandomIndex(secondNames);
+  newElem.querySelector('.wizard-coat').style.fill = getRandomIndex(coatColor);
+  newElem.querySelector('.wizard-eyes').style.fill = getRandomIndex(eyesColor);
   fragment.appendChild(newElem);
   similarWizard.appendChild(fragment);
 };
 
-for (i = 0; i < 4; i++) {
+for (var i = 0; i < 4; i++) {
   getNewElem();
 }
 
